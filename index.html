@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Для тебя</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<main class="page">
+
+    <div class="glow glow-left"></div>
+    <div class="glow glow-right"></div>
+
+    <!-- Декоративные звезды. Они специально не попадают в центральную область. -->
+    <div class="background-stars" aria-hidden="true">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span>
+    </div>
+
+    <div class="moon" aria-hidden="true"></div>
+
+    <!-- Центральная композиция -->
+    <section class="intro" id="intro">
+        <div class="eyebrow">маленькая вещь для тебя</div>
+        <h1>Для тебя</h1>
+        <p>Здесь спрятано несколько мыслей.</p>
+        <div class="hint">нажми на любую звезду</div>
+    </section>
+
+    <!-- РОВНО 5 интерактивных звезд.
+         Никакой отдельной звезды для перехода нет. -->
+    <div class="interactive-stars" id="interactiveStars">
+
+        <button class="star star-1" type="button" aria-label="Открыть мысль">
+            <span>✦</span>
+        </button>
+
+        <button class="star star-2" type="button" aria-label="Открыть мысль">
+            <span>✦</span>
+        </button>
+
+        <button class="star star-3" type="button" aria-label="Открыть мысль">
+            <span>✦</span>
+        </button>
+
+        <button class="star star-4" type="button" aria-label="Открыть мысль">
+            <span>✦</span>
+        </button>
+
+        <button class="star star-5" type="button" aria-label="Открыть мысль">
+            <span>✦</span>
+        </button>
+
+    </div>
+
+    <!-- Сообщения -->
+    <div class="message-container" id="messageContainer" aria-live="polite">
+        <div class="message-card">
+            <div class="message-number" id="messageNumber">01</div>
+            <div class="message-text" id="messageText"></div>
+        </div>
+    </div>
+
+    <!-- Небольшой переходный свет. НЕ кликабельный. -->
+    <div class="transition-light" id="transitionLight" aria-hidden="true"></div>
+
+    <!-- СЦЕНА С БУКЕТОМ -->
+    <section class="flower-scene" id="flowerScene" aria-label="Букет для тебя">
+
+        <div class="flower-stars" aria-hidden="true">
+            <i></i><i></i><i></i><i></i><i></i><i></i>
+            <i></i><i></i><i></i><i></i>
+        </div>
+
+        <div class="flower-glow flower-glow-main"></div>
+        <div class="flower-glow flower-glow-side"></div>
+
+        <div class="flower-copy">
+            <div class="flower-kicker">ещё кое-что для тебя</div>
+            <h2>Немного цветов.</h2>
+            <p>Просто потому что иногда хочется подарить что-то красивое.</p>
+        </div>
+
+        <button class="bouquet" id="bouquet" type="button" aria-label="Открыть букет">
+            <svg viewBox="0 0 520 620" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <defs>
+                    <linearGradient id="stemGradient" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0" stop-color="#789675"/>
+                        <stop offset=".55" stop-color="#4e6f54"/>
+                        <stop offset="1" stop-color="#2f4938"/>
+                    </linearGradient>
+
+                    <linearGradient id="leafGradient" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0" stop-color="#66866a"/>
+                        <stop offset="1" stop-color="#304d3a"/>
+                    </linearGradient>
+
+                    <radialGradient id="roseOuter" cx="45%" cy="30%">
+                        <stop offset="0" stop-color="#ffe8e7"/>
+                        <stop offset=".32" stop-color="#e9aab2"/>
+                        <stop offset=".72" stop-color="#bd7180"/>
+                        <stop offset="1" stop-color="#814656"/>
+                    </radialGradient>
+
+                    <linearGradient id="roseLight" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0" stop-color="#fff4f2"/>
+                        <stop offset=".55" stop-color="#efc0c4"/>
+                        <stop offset="1" stop-color="#b66a79"/>
+                    </linearGradient>
+
+                    <linearGradient id="lilyGradient" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0" stop-color="#fffdf9"/>
+                        <stop offset=".52" stop-color="#f4e8ef"/>
+                        <stop offset="1" stop-color="#d7bfd0"/>
+                    </linearGradient>
+
+                    <radialGradient id="lilyCenter">
+                        <stop offset="0" stop-color="#d9a04d"/>
+                        <stop offset=".6" stop-color="#c7853d"/>
+                        <stop offset="1" stop-color="#9c6336"/>
+                    </radialGradient>
+
+                    <filter id="bouquetGlow" x="-60%" y="-60%" width="220%" height="220%">
+                        <feGaussianBlur stdDeviation="8" result="blur"/>
+                        <feMerge>
+                            <feMergeNode in="blur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+
+                    <filter id="softShadow" x="-80%" y="-80%" width="260%" height="260%">
+                        <feGaussianBlur stdDeviation="6"/>
+                    </filter>
+                </defs>
+
+                <ellipse class="bouquet-shadow" cx="260" cy="574" rx="128" ry="17"/>
+
+                <!-- стебли -->
+                <g class="stems">
+                    <path d="M257 558 C254 466 247 367 215 245"/>
+                    <path d="M260 558 C264 456 292 353 319 230"/>
+                    <path d="M255 558 C232 449 184 358 145 289"/>
+                    <path d="M263 558 C288 457 357 369 383 292"/>
+                    <path d="M259 558 C258 438 261 344 261 235"/>
+                </g>
+
+                <!-- листья -->
+                <g class="leaves">
+                    <path d="M210 438 C158 410 123 425 131 450 C150 471 185 464 219 444Z"/>
+                    <path d="M295 430 C343 399 382 410 375 437 C355 460 322 453 290 438Z"/>
+                    <path d="M181 366 C142 341 110 350 115 372 C130 394 158 391 190 374Z"/>
+                    <path d="M329 352 C373 327 405 338 398 362 C382 384 352 377 320 362Z"/>
+                    <path d="M248 392 C223 363 226 335 250 329 C273 341 271 367 252 397Z"/>
+                </g>
+
+                <!-- ЛИЛИЯ слева -->
+                <g class="lily lily-left">
+                    <path class="petal" d="M143 286 C104 263 82 225 96 207 C128 207 149 236 151 272 C151 278 148 283 143 286Z"/>
+                    <path class="petal" d="M148 283 C123 239 128 193 153 187 C179 207 175 247 155 282Z"/>
+                    <path class="petal" d="M151 281 C156 235 184 202 207 214 C213 245 185 270 157 286Z"/>
+                    <path class="petal" d="M151 283 C191 266 225 274 229 296 C209 316 176 306 150 290Z"/>
+                    <path class="petal" d="M150 287 C115 304 84 294 81 274 C99 255 125 264 153 279Z"/>
+                    <path class="petal inner" d="M151 283 C145 252 151 222 166 210 C181 229 173 259 155 284Z"/>
+                    <circle class="lily-center" cx="153" cy="285" r="8"/>
+                    <circle class="pollen" cx="135" cy="270" r="2.7"/>
+                    <circle class="pollen" cx="171" cy="264" r="2.7"/>
+                    <circle class="pollen" cx="180" cy="288" r="2.7"/>
+                </g>
+
+                <!-- ЛИЛИЯ справа -->
+                <g class="lily lily-right">
+                    <path class="petal" d="M382 294 C349 270 335 235 347 218 C375 220 390 245 390 278Z"/>
+                    <path class="petal" d="M388 291 C367 254 372 215 394 209 C416 228 411 263 395 292Z"/>
+                    <path class="petal" d="M390 291 C398 253 422 226 442 237 C447 264 424 286 397 296Z"/>
+                    <path class="petal" d="M390 294 C424 279 451 285 455 303 C439 320 412 313 389 301Z"/>
+                    <path class="petal" d="M389 298 C360 311 336 303 334 287 C348 271 370 279 392 291Z"/>
+                    <path class="petal inner" d="M390 293 C385 268 390 243 403 232 C416 248 409 274 394 295Z"/>
+                    <circle class="lily-center" cx="391" cy="294" r="7"/>
+                    <circle class="pollen" cx="375" cy="281" r="2.5"/>
+                    <circle class="pollen" cx="408" cy="275" r="2.5"/>
+                    <circle class="pollen" cx="416" cy="294" r="2.5"/>
+                </g>
+
+                <!-- РОЗА левая -->
+                <g class="rose rose-left" filter="url(#bouquetGlow)">
+                    <circle class="rose-base" cx="205" cy="210" r="66"/>
+                    <ellipse class="rose-petal outer-a" cx="177" cy="199" rx="38" ry="49" transform="rotate(-28 177 199)"/>
+                    <ellipse class="rose-petal outer-b" cx="226" cy="190" rx="40" ry="51" transform="rotate(27 226 190)"/>
+                    <ellipse class="rose-petal outer-c" cx="235" cy="229" rx="39" ry="47" transform="rotate(64 235 229)"/>
+                    <ellipse class="rose-petal outer-d" cx="184" cy="239" rx="38" ry="47" transform="rotate(-64 184 239)"/>
+                    <ellipse class="rose-petal mid-a" cx="188" cy="211" rx="31" ry="38" transform="rotate(-25 188 211)"/>
+                    <ellipse class="rose-petal mid-b" cx="218" cy="204" rx="31" ry="39" transform="rotate(31 218 204)"/>
+                    <ellipse class="rose-petal mid-c" cx="218" cy="229" rx="29" ry="36" transform="rotate(72 218 229)"/>
+                    <ellipse class="rose-petal mid-d" cx="190" cy="231" rx="28" ry="34" transform="rotate(-70 190 231)"/>
+                    <path class="rose-fold" d="M191 219 C186 199 202 186 218 193 C231 199 230 216 218 222 C207 228 198 220 202 211 C205 204 214 205 217 211"/>
+                </g>
+
+                <!-- РОЗА правая -->
+                <g class="rose rose-right" filter="url(#bouquetGlow)">
+                    <circle class="rose-base" cx="317" cy="190" r="72"/>
+                    <ellipse class="rose-petal outer-a" cx="286" cy="179" rx="40" ry="53" transform="rotate(-27 286 179)"/>
+                    <ellipse class="rose-petal outer-b" cx="339" cy="170" rx="43" ry="54" transform="rotate(27 339 170)"/>
+                    <ellipse class="rose-petal outer-c" cx="350" cy="211" rx="42" ry="51" transform="rotate(64 350 211)"/>
+                    <ellipse class="rose-petal outer-d" cx="294" cy="222" rx="42" ry="51" transform="rotate(-65 294 222)"/>
+                    <ellipse class="rose-petal mid-a" cx="298" cy="190" rx="33" ry="42" transform="rotate(-25 298 190)"/>
+                    <ellipse class="rose-petal mid-b" cx="329" cy="183" rx="34" ry="42" transform="rotate(31 329 183)"/>
+                    <ellipse class="rose-petal mid-c" cx="329" cy="210" rx="31" ry="39" transform="rotate(72 329 210)"/>
+                    <ellipse class="rose-petal mid-d" cx="299" cy="213" rx="31" ry="38" transform="rotate(-70 299 213)"/>
+                    <path class="rose-fold" d="M302 199 C297 177 314 163 331 171 C344 177 344 194 331 202 C320 209 311 201 315 191 C318 184 327 185 330 192"/>
+                </g>
+
+                <!-- РОЗА верхняя -->
+                <g class="rose rose-top" filter="url(#bouquetGlow)">
+                    <circle class="rose-base" cx="260" cy="108" r="57"/>
+                    <ellipse class="rose-petal outer-a" cx="237" cy="101" rx="34" ry="44" transform="rotate(-28 237 101)"/>
+                    <ellipse class="rose-petal outer-b" cx="281" cy="95" rx="35" ry="45" transform="rotate(28 281 95)"/>
+                    <ellipse class="rose-petal outer-c" cx="288" cy="126" rx="34" ry="42" transform="rotate(64 288 126)"/>
+                    <ellipse class="rose-petal outer-d" cx="239" cy="132" rx="34" ry="42" transform="rotate(-65 239 132)"/>
+                    <ellipse class="rose-petal mid-a" cx="244" cy="111" rx="27" ry="34" transform="rotate(-25 244 111)"/>
+                    <ellipse class="rose-petal mid-b" cx="274" cy="106" rx="28" ry="35" transform="rotate(30 274 106)"/>
+                    <ellipse class="rose-petal mid-c" cx="272" cy="126" rx="25" ry="32" transform="rotate(72 272 126)"/>
+                    <ellipse class="rose-petal mid-d" cx="245" cy="129" rx="25" ry="31" transform="rotate(-70 245 129)"/>
+                    <path class="rose-fold" d="M249 119 C245 101 258 89 272 95 C283 100 283 114 273 120 C263 126 256 119 259 111 C261 105 269 106 271 111"/>
+                </g>
+            </svg>
+        </button>
+
+        <div class="flower-note" id="flowerNote">
+            <span>нажми на букет</span>
+        </div>
+
+        <button class="flower-after" id="flowerAfter" type="button">
+            <span class="flower-after-line"></span>
+            <span>идём дальше</span>
+        </button>
+
+    </section>
+
+    <!-- СЦЕНА С КОТИКОМ -->
+    <section class="cat-scene" id="catScene" aria-label="Интерактивный котик">
+        <div class="cat-orb cat-orb-one"></div>
+        <div class="cat-orb cat-orb-two"></div>
+
+        <div class="cat-stars" aria-hidden="true">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+
+        <div class="cat-copy">
+            <div class="cat-kicker">и кое-кто ещё</div>
+            <h2>Тут появился один котик.</h2>
+            <p id="catStatus">Можешь с ним немного пообщаться.</p>
+        </div>
+
+        <div class="cat-wrap" id="catWrap">
+            <div class="cat-hearts" aria-hidden="true">
+                <span>♥</span><span>♥</span><span>♥</span>
+            </div>
+
+            <svg class="cat-svg" viewBox="0 0 500 470" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <defs>
+                    <linearGradient id="catFur" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0" stop-color="#f1d8c5"/>
+                        <stop offset=".55" stop-color="#c89f87"/>
+                        <stop offset="1" stop-color="#8b675c"/>
+                    </linearGradient>
+                    <linearGradient id="catFurLight" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0" stop-color="#fff1e4"/>
+                        <stop offset="1" stop-color="#d9b9a3"/>
+                    </linearGradient>
+                    <radialGradient id="catEar">
+                        <stop offset="0" stop-color="#eaaeb0"/>
+                        <stop offset="1" stop-color="#a96f72"/>
+                    </radialGradient>
+                    <filter id="catShadow" x="-50%" y="-50%" width="200%" height="200%">
+                        <feGaussianBlur stdDeviation="7"/>
+                    </filter>
+                    <filter id="catGlow" x="-50%" y="-50%" width="200%" height="200%">
+                        <feGaussianBlur stdDeviation="10" result="b"/>
+                        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                </defs>
+
+                <ellipse class="cat-ground-shadow" cx="250" cy="430" rx="122" ry="17"/>
+
+                <!-- хвост -->
+                <path class="cat-tail" d="M351 337 C427 331 438 274 397 250 C368 233 344 252 356 274 C368 296 400 288 410 268"/>
+
+                <!-- тело -->
+                <path class="cat-body" d="M157 330 C151 275 175 229 250 224 C325 229 349 275 343 330 C338 383 314 407 250 409 C186 407 162 383 157 330Z"/>
+                <ellipse class="cat-belly" cx="250" cy="343" rx="55" ry="65"/>
+
+                <!-- задние лапы -->
+                <ellipse class="cat-paw back-left" cx="194" cy="390" rx="48" ry="24"/>
+                <ellipse class="cat-paw back-right" cx="306" cy="390" rx="48" ry="24"/>
+
+                <!-- передние лапы -->
+                <g class="cat-front-paws">
+                    <path d="M198 322 C185 347 187 380 207 389 C225 396 239 380 233 356 L224 323Z"/>
+                    <path d="M302 322 C315 347 313 380 293 389 C275 396 261 380 267 356 L276 323Z"/>
+                </g>
+
+                <!-- голова -->
+                <path class="cat-head" d="M157 168 L171 94 L218 126 C238 119 262 119 282 126 L329 94 L343 168 C354 190 348 226 331 245 C312 266 285 276 250 276 C215 276 188 266 169 245 C152 226 146 190 157 168Z"/>
+
+                <!-- внутренности ушей -->
+                <path class="cat-ear-inner" d="M177 113 L181 157 L210 136Z"/>
+                <path class="cat-ear-inner" d="M323 113 L319 157 L290 136Z"/>
+
+                <!-- мордочка -->
+                <ellipse class="cat-muzzle" cx="217" cy="214" rx="38" ry="31"/>
+                <ellipse class="cat-muzzle" cx="283" cy="214" rx="38" ry="31"/>
+                <ellipse class="cat-nose" cx="250" cy="216" rx="9" ry="7"/>
+                <path class="cat-mouth" d="M250 221 C246 233 233 233 228 226 M250 221 C254 233 267 233 272 226"/>
+
+                <!-- глаза -->
+                <g class="cat-eyes">
+                    <ellipse class="cat-eye" cx="207" cy="187" rx="13" ry="17"/>
+                    <ellipse class="cat-eye" cx="293" cy="187" rx="13" ry="17"/>
+                    <ellipse class="cat-pupil" cx="208" cy="188" rx="4" ry="9"/>
+                    <ellipse class="cat-pupil" cx="292" cy="188" rx="4" ry="9"/>
+                </g>
+
+                <!-- усы -->
+                <g class="cat-whiskers">
+                    <path d="M203 216 L142 205"/><path d="M202 225 L136 225"/><path d="M297 216 L358 205"/><path d="M298 225 L364 225"/>
+                </g>
+
+                <!-- сердечко на ошейнике -->
+                <path class="cat-collar" d="M188 266 Q250 285 312 266 L306 281 Q250 300 194 281Z"/>
+                <path class="cat-tag" d="M250 280 L260 293 L250 306 L240 293Z"/>
+            </svg>
+
+            <div class="fish" id="fish" aria-hidden="true">
+                <span class="fish-body"></span><span class="fish-tail"></span><span class="fish-eye"></span>
+            </div>
+        </div>
+
+        <div class="cat-actions" id="catActions">
+            <button class="cat-action" data-action="pet" type="button">
+                <span class="action-icon">♡</span>
+                <span>погладить</span>
+            </button>
+            <button class="cat-action" data-action="fish" type="button">
+                <span class="action-icon">⌁</span>
+                <span>дать рыбку</span>
+            </button>
+            <button class="cat-action" data-action="hug" type="button">
+                <span class="action-icon">♡</span>
+                <span>обнять</span>
+            </button>
+        </div>
+
+        <div class="cat-final" id="catFinal">
+            <div class="cat-final-line"></div>
+            <p>Вот примерно так я бы тебя сейчас обнял.</p>
+            <span>♥</span>
+        </div>
+    </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
