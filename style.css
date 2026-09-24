@@ -1585,98 +1585,31 @@ button {
     .cat-final p { font-size: 14px; line-height: 1.45; }
 }
 
-/* =========================================================
-   MOBILE FIX — свободная высота и нормальный скролл
-   ========================================================= */
+/* =========================
+   MOBILE SCROLL FIX
+   ========================= */
 
 @media (max-width: 600px) {
 
-  html,
-  body {
-    width: 100%;
-    min-height: 100%;
-    height: auto;
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
+    html,
+    body {
+        height: auto;
+        min-height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
 
-  body {
-    -webkit-overflow-scrolling: touch;
-  }
+    .page {
+        height: 100svh;
+        min-height: 620px;
+        overflow: visible;
+    }
 
-  .page {
-    width: 100%;
-    min-height: 100svh;
-    height: auto;
-    overflow: visible;
-  }
-
-  /* Первая сцена */
-  .message-container {
-    position: absolute;
-    width: 90vw;
-    max-width: 420px;
-    bottom: auto;
-    top: 72%;
-    transform: translateX(-50%);
-    padding-bottom: 24px;
-  }
-
-  .message-card {
-    min-height: 0;
-    padding: 20px 17px 22px;
-  }
-
-  .message-text {
-    line-height: 1.55;
-  }
-
-  /* Цветочная сцена */
-  .flower-scene {
-    position: absolute;
-    min-height: 100svh;
-    height: auto;
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding-bottom: 120px;
-  }
-
-  .flower-copy {
-    top: 7%;
-  }
-
-  .bouquet {
-    width: 90vw;
-    height: 48vh;
-    max-height: 430px;
-    margin-top: 105px;
-  }
-
-  .flower-note,
-  .flower-after {
-    bottom: 35px;
-  }
-
-  /* Котик */
-  .cat-scene {
-    position: absolute;
-    min-height: 100svh;
-    height: auto;
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding: 30px 0 50px;
-  }
-
-  .cat-actions {
-    position: relative;
-    bottom: auto;
-    margin: 25px auto 0;
-    width: 90vw;
-    max-width: 420px;
-  }
-
-  .cat-action {
-    min-height: 48px;
-  }
-
+    .flower-scene,
+    .cat-scene {
+        overflow-x: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
 }
