@@ -1584,32 +1584,3 @@ button {
     .cat-final { bottom: 5%; }
     .cat-final p { font-size: 14px; line-height: 1.45; }
 }
-
-/* =========================
-   MOBILE SCROLL FIX
-   ========================= */
-
-@media (max-width: 600px) {
-
-    html,
-    body {
-        height: auto;
-        min-height: 100%;
-        overflow-x: hidden;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .page {
-        height: 100svh;
-        min-height: 620px;
-        overflow: visible;
-    }
-
-    .flower-scene,
-    .cat-scene {
-        overflow-x: hidden;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-}
